@@ -8,22 +8,30 @@ class AVLTree
     /* Constructor */
     public AVLTree()
     {
-       //Complete Your Code Here
+       this.root =null;
     }
     /* Function to check if tree is empty */
     public boolean isEmpty()
     {
-        //Complete Your Code Here
+        return (root == null);
     }
     /* Make the tree logically empty */
     public void makeEmpty()
     {
-        //Complete Your Code Here
+        root =null;
     }
     /* Function to insert data */
     public void insert(Comparable data)
     {
-        //Complete Your Code Here
+        if(root ==null)
+        {
+            root = new AVLNode(data);
+        }
+        else
+        {
+            insert(data,root);
+        }
+
     }
     /* Function to get height of node */
     private int height(AVLNode t )
