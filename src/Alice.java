@@ -1,10 +1,10 @@
 import javafx.util.Pair;
 
 
-public class Alice {
+public class Alice extends User {
 
     private Puzzle [] puzzlesArray;
-    //Add Fields if needed
+    AVLTree tree = new AVLTree();
 
     public Alice(){
     }
@@ -26,10 +26,10 @@ public class Alice {
             int [] riddle = new int [n];
             for (int j=0; j<n; j++)
             {
-                privateKey[i] = (int)(Math.random()* (j+1) *(n^3));
-                riddle[i] = (int)(Math.random()* (j+1) *(n^3));
+                privateKey[j] = (int)(Math.random()* (j+1) *(Math.pow(n,3)));
+                riddle[j] = (int)((Math.pow(n,3) * Math.random()* (j+1) ));
             }
-            solvePuzzles();
+            solvePuzzles(new Puzzle(privateKey,riddle));
 
             RandomShuffle(privateKey);
             RandomShuffle(riddle);
@@ -38,7 +38,7 @@ public class Alice {
     }
     public void RandomShuffle( int [] arr)
     {
-        for (int i=arr.length; i>0; i--)
+        for (int i=arr.length-1; i>=0; i--)
         {
             swap(arr,i,(int)(Math.random()*i));
         }
@@ -52,10 +52,28 @@ public class Alice {
     }
 
     public Pair<String, Integer> findKey(String sIndex){
-        //Complete Your Code Here
+            int num = binToInt(sIndex);
+        return new Pair<String, Integer>(tree.search(num),0);
+
     }
 
-
+    private void solvePuzzles(Puzzle puz)
+    {
+        Pair<String, String> solvedPuz = solvePuzzle(puz);
+        int num = binToInt(solvedPuz.getValue());
+        System.out.println(solvedPuz.getValue() + " " + num);
+        tree.insert(new Integer(num),solvedPuz.getKey());
+    }
+    private int binToInt(String bin)
+    {
+        int sum =0, exponent =1;
+        for (int i=bin.length()-1; i>=0;i--)
+        {
+            sum += bin.charAt(i) * exponent;
+            exponent = exponent*2;
+        }
+        return sum;
+    }
 
 
 }

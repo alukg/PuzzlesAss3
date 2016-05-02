@@ -44,7 +44,7 @@ public class MerklePuzzles {
         System.out.println("The time it took Alice to find the puzzle: " + (endTime - startTime));
     }
 
-    private void Eve_findKey(){
+    private void Eve_findKey() throws Exception {
         Puzzle[] puz = alice.getPuzzlesCopy();
         long startTime = System.nanoTime();
         Pair<String,Integer> eveAns = eve.findKey(key,puz);
@@ -54,11 +54,22 @@ public class MerklePuzzles {
         System.out.println("The time it took Eve to find the puzzle: " + (endTime - startTime));
     }
 
-    public void fullTest(int n, int k){
+    public void fullTest(int n, int k) throws Exception {
         Alice_createPuzzles(n,k);
         Bob_choosePuzzles();
         Alice_findKey();
         Eve_findKey();
+    }
+    public static void main(String[] args) {
+        MerklePuzzles m = new MerklePuzzles();
+        try{
+            m.fullTest(5,3);
+        }
+        catch(Exception e)
+        {
+            System.out.println("shtok");
+        }
+
     }
 
 

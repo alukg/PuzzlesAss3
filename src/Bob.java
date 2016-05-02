@@ -2,20 +2,23 @@ import javafx.util.Pair;
 
 import java.io.*;
 
-public class Bob {
+public class Bob extends User {
 
-    //Add Fields if needed
 
     public Bob(){
-        //Complete Your Code Here
+
     }
 
     public Pair<String, String> choosePuzzle(Puzzle[] puzzles){
-		//Complete Your Code Here
+        int puzzleNum = (int)(Math.random() * puzzles.length);
+        return solvePuzzle(puzzles[puzzleNum]);
+
     }
 
-    public Pair<String, String> solvePuzzle(Puzzle puz){
-        //Complete Your Code Here
-    }
+
+    /*public Pair<String, String> solvePuzzle(Puzzle puz){
+
+    }*/
+
 
 }

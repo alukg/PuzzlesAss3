@@ -2,7 +2,8 @@
 class AVLNode
 {
     AVLNode left, right;
-    Comparable data;
+    Integer key;
+    String riddle;
     int height;
 
     /* Constructor */
@@ -10,15 +11,17 @@ class AVLNode
     {
         left = null;
         right = null;
-        data = null;
+        key = null;
+        riddle =null;
         height = 0;
     }
     /* Constructor */
-    public AVLNode(Comparable n)
+    public AVLNode(Integer n, String riddle)
     {
         left = null;
         right = null;
-        data = n;
+        key = n;
+        this.riddle = riddle;
         height = 0;
     }
 }
