@@ -122,16 +122,15 @@ class AVLTree
     /* Functions to search for an element */
     public String search(Integer val)
     {
-        return search(root, val.intValue());
+        return search(root, val);
 
     }
     private String search(AVLNode r, Integer val)
     {
         while (r != null) {
-            int rval = r.key.intValue();
-            if (val.intValue() < rval)
+            if (val < r.key)
                 r = r.left;
-            else if (val.intValue() > rval)
+            else if (val > r.key)
                 r = r.right;
             else {
                 return r.riddle;

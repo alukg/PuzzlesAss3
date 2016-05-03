@@ -4,7 +4,7 @@ import javafx.util.Pair;
  * Created by shahar on 02/05/2016.
  */
 public abstract class User {
-    protected void sort(Puzzle puz)
+    protected Puzzle sort(Puzzle puz)
     {
         int[] privateKey = puz.getPrivateKey();
         int[] riddle = puz.getRiddle();
@@ -17,12 +17,12 @@ public abstract class User {
             sortedPrivateKey[(int)(privateKey[i]/(Math.pow(privateKey.length,3)))] = privateKey[i];
             sortedRiddle[(int)(riddle[i]/(Math.pow(riddle.length,3)))] = riddle[i];
         }
-        puz = new Puzzle(sortedPrivateKey, sortedRiddle);
+        return new Puzzle(sortedPrivateKey, sortedRiddle);
     }
     public Pair<String, String> solvePuzzle(Puzzle puz)
     {
         if (!(this instanceof Alice))
-            sort(puz);
+            puz = sort(puz);
         int [] PrivateKey = puz.getPrivateKey();
         int [] riddle = puz.getRiddle();
         String solvedPrivatekey ="", solvedRiddle = "";

@@ -15,8 +15,8 @@ public class Eve extends User {
 		for (int i=0; i< puzzles.length; i++)
         {
             Pair<String, String> solvedStrings = solvePuzzle(puzzles[i]);
-            if (solvedStrings.getKey() == index)
-                return new Pair<String, Integer>(solvedStrings.getValue(), i+1);
+            if (solvedStrings.getValue().equals(index))
+                return new Pair(solvedStrings.getKey(), i+1);
         }
         throw new Exception("key not Found");
     }
