@@ -11,7 +11,8 @@ public class Bob extends User {
 
     public Pair<String, String> choosePuzzle(Puzzle[] puzzles){
         int puzzleNum = (int)(Math.random() * puzzles.length);
-        return solvePuzzle(puzzles[puzzleNum]);
+        Pair ans =  solvePuzzle(puzzles[puzzleNum]);
+        return new Pair(ans.getValue(),ans.getKey());
     }
 
 

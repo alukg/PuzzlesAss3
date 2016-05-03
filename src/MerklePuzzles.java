@@ -28,8 +28,8 @@ public class MerklePuzzles {
         long startTime = System.nanoTime();
         Pair<String, String> bobAns = bob.choosePuzzle(puz);
         long endTime = System.nanoTime();
-        key = bobAns.getValue();
-        privateKey = bobAns.getKey();
+        key = bobAns.getKey();
+        privateKey = bobAns.getValue();
         System.out.println("The time it took Bob to choose the puzzle: " + (endTime - startTime));
         System.out.println("The puzzle index Bob chose: " + key);
         System.out.println("The private key of the puzzle Bob chose: " + privateKey);
@@ -63,7 +63,12 @@ public class MerklePuzzles {
     public static void main(String[] args) {
         MerklePuzzles m = new MerklePuzzles();
         try{
-            m.fullTest(9,3);
+            for(int i=0;i<10;i++){
+                m.fullTest(100,20000);
+                System.out.println("--------------------------------------------------------------");
+                System.out.println("--------------------------------------------------------------");
+                System.out.println("--------------------------------------------------------------");
+            }
         }
         catch(Exception e)
         {
