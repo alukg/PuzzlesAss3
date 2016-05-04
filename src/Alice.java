@@ -31,8 +31,7 @@ public class Alice extends User {
                 privateKey[j] = (int)((Math.random()+j) * Math.pow(n,3));
                 riddle[j] = (int)((Math.random()+j) * Math.pow(n,3));
             }
-            solvePuzzles(new Puzzle(privateKey,riddle),i);
-
+            answers[i] = solvePuzzle(new Puzzle(privateKey,riddle));
             RandomShuffle(privateKey);
             RandomShuffle(riddle);
             this.puzzlesArray[i] = new Puzzle(privateKey,riddle);
@@ -56,40 +55,18 @@ public class Alice extends User {
     }
 
     public Pair<String, Integer> findKey(String sIndex) throws Exception {
-        Integer num = new Integer(binToInt(sIndex));
-        return search(num);
-    }
-
-    private void solvePuzzles(Puzzle puz,int index)
-    {
-        Pair<String, String> solvedPuz = solvePuzzle(puz);
-        int num = binToInt(solvedPuz.getValue());
-        answers[index] = new Pair(solvedPuz.getKey(),new Integer(num));
-    }
-    private int binToInt(String bin)
-    {
-        int sum =0, exponent =1;
-        for (int i=bin.length()-1; i>=0;i--)
-        {
-            sum += Integer.parseInt(""+bin.charAt(i)) * exponent;
-            exponent = exponent*2;
-        }
-        return sum;
-    }
-
-    private Pair search(Integer num) throws Exception {
         int low = 0;
         int high = answers.length-1;
-        Integer serachCounter = new Integer(0);
+        Integer searchCounter = new Integer(0);
         while(low <= high) {
             int middle = (low+high) /2;
-            serachCounter += 1;
-            if (num > (Integer)(answers[middle].getValue())){
+            searchCounter += 1;
+            if (sIndex.compareTo((String)(answers[middle].getValue()))==1){
                 low = middle +1;
-            } else if (num < (Integer)(answers[middle].getValue())){
+            } else if (sIndex.compareTo((String)(answers[middle].getValue()))==-1){
                 high = middle -1;
             } else { // The element has been found
-                return new Pair(answers[middle].getKey(),serachCounter);
+                return new Pair(answers[middle].getKey(),searchCounter);
             }
         }
         throw new Exception("Key didn't found");

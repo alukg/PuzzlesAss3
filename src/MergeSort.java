@@ -26,7 +26,7 @@ public class MergeSort
         int num = rightEnd - left + 1;
 
         while(left <= leftEnd && right <= rightEnd)
-            if((Integer)(a[left].getValue()) < (Integer)(a[right].getValue()))
+            if(((String)(a[left].getValue())).compareTo((String)(a[right].getValue()))==-1)
                 tmp[k++] = a[left++];
             else
                 tmp[k++] = a[right++];

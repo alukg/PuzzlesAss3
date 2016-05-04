@@ -25,13 +25,13 @@ public abstract class User {
             puz = sort(puz);
         int [] PrivateKey = puz.getPrivateKey();
         int [] riddle = puz.getRiddle();
-        String solvedPrivatekey ="", solvedRiddle = "";
+        String solvedPrivateKey ="", solvedRiddle = "";
         for (int i=0; i< PrivateKey.length; i++)
         {
-            solvedPrivatekey += solveXor(PrivateKey[i]);
+            solvedPrivateKey += solveXor(PrivateKey[i]);
             solvedRiddle += solveXor(riddle[i]);
         }
-        return new Pair(solvedPrivatekey, solvedRiddle);
+        return new Pair(solvedPrivateKey, solvedRiddle);
     }
 
     private String solveXor(int num)

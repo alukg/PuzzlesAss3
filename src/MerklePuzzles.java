@@ -64,7 +64,7 @@ public class MerklePuzzles {
         MerklePuzzles m = new MerklePuzzles();
         try{
             for(int i=0;i<10;i++){
-                m.fullTest(100,20000);
+                m.fullTest(6,3);
                 System.out.println("--------------------------------------------------------------");
                 System.out.println("--------------------------------------------------------------");
                 System.out.println("--------------------------------------------------------------");
