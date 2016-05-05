@@ -31,14 +31,33 @@ public class Alice extends User {
                 privateKey[j] = (int)((Math.random()+j) * Math.pow(n,3));
                 riddle[j] = (int)((Math.random()+j) * Math.pow(n,3));
             }
-            answers[i] = solvePuzzle(new Puzzle(privateKey,riddle));
-            RandomShuffle(privateKey);
-            RandomShuffle(riddle);
-            this.puzzlesArray[i] = new Puzzle(privateKey,riddle);
+            //answers[i] = solvePuzzle(new Puzzle(privateKey,riddle));
+            Pair<String,String> temp = solvePuzzle(new Puzzle(privateKey,riddle));
+            if(isAlreadyExists(temp.getValue(),i))
+            {
+                i = i-1;
+            }
+            else
+            {
+                answers[i] = temp;
+                RandomShuffle(privateKey);
+                RandomShuffle(riddle);
+                this.puzzlesArray[i] = new Puzzle(privateKey,riddle);
+            }
         }
         MergeSort.mergeSort(answers);
     }
 
+    private boolean isAlreadyExists(String riddle, int index)
+    {
+        for (int i=0; i<index;i++)
+        {
+            if(this.answers[i].getValue().equals(riddle)) {
+                return true;
+            }
+        }
+        return false;
+    }
     public void RandomShuffle( int [] arr)
     {
         for (int i=arr.length-1; i>=0; i--)
