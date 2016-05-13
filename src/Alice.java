@@ -1,15 +1,21 @@
-import javafx.util.Pair;
-
-
+/**
+ * Class that represents the functions of alice.
+ */
 public class Alice extends User {
 
-    private Puzzle [] puzzlesArray;
-    private Pair[] answers;
-    //AVLTree tree = new AVLTree();
+    private Puzzle[] puzzlesArray; //keeps the random puzzles.
+    private Pair[] answers; //keeps the answers to the puzzles.
 
+    /**
+     * Constructor
+     */
     public Alice(){
     }
 
+    /**
+     * Copy and return deep copy of the puzzles array.
+     * @return array of Puzzles.
+     */
     public Puzzle[] getPuzzlesCopy(){
         Puzzle[] puzzlesCopy = new Puzzle[puzzlesArray.length];
         for(int i = 0; i < puzzlesArray.length; i++){

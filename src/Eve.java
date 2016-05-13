@@ -1,7 +1,3 @@
-import javafx.util.Pair;
-
-import java.io.*;
-
 /**
  * Created by tomercoh on 16/04/2016.
  */

@@ -1,5 +1,3 @@
-import javafx.util.Pair;
-
 /**
  * Created by shahar on 02/05/2016.
  */
@@ -19,6 +17,7 @@ public abstract class User {
         }
         return new Puzzle(sortedPrivateKey, sortedRiddle);
     }
+
     public Pair<String, String> solvePuzzle(Puzzle puz)
     {
         if (!(this instanceof Alice))

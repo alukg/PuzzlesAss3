@@ -1,5 +1,3 @@
-import javafx.util.Pair;
-
 public class MergeSort
 {
     public static void mergeSort(Pair[] a)
