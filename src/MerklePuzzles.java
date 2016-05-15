@@ -4,8 +4,8 @@ public class MerklePuzzles {
     private Alice alice;
     private Bob bob;
     private Eve eve;
-    private String key;
-    private String privateKey;
+    String key;
+    String privateKey;
 
     public MerklePuzzles(){
         alice = new Alice();
@@ -34,16 +34,16 @@ public class MerklePuzzles {
         System.out.println("The private key of the puzzle Bob chose: " + privateKey);
     }
 
-    private void Alice_findKey() throws Exception {
+    private void Alice_findKey() {
         long startTime = System.nanoTime();
         Pair<String,Integer> aliceAns = alice.findKey(key);
         long endTime = System.nanoTime();
-        System.out.println("The private key of the puzzle Alice found: " + aliceAns.getKey());
+        System.out.println("The private key of the puzzle Alice found: " + aliceAns);
         System.out.println("The number of comparisons Alice had done: " + aliceAns.getValue());
         System.out.println("The time it took Alice to find the puzzle: " + (endTime - startTime));
     }
 
-    private void Eve_findKey() throws Exception {
+    private void Eve_findKey() {
         Puzzle[] puz = alice.getPuzzlesCopy();
         long startTime = System.nanoTime();
         Pair<String,Integer> eveAns = eve.findKey(key,puz);
@@ -53,30 +53,23 @@ public class MerklePuzzles {
         System.out.println("The time it took Eve to find the puzzle: " + (endTime - startTime));
     }
 
-    public void fullTest(int n, int k) throws Exception {
+    public void fullTest(int n, int k) {
         Alice_createPuzzles(n,k);
         Bob_choosePuzzles();
         Alice_findKey();
         Eve_findKey();
     }
 
-    public static void main(String[] args) {
-        MerklePuzzles m = new MerklePuzzles();
+    public static void main (String[] args){
+        MerklePuzzles mp = new MerklePuzzles();
         try{
-            for(int i=0;i<10;i++){
-                m.fullTest(100,5000);
-                System.out.println("--------------------------------------------------------------");
-                System.out.println("--------------------------------------------------------------");
-                System.out.println("--------------------------------------------------------------");
+            for(int i=1;i<10;i++){
+                mp.fullTest(20,10);
             }
         }
-        catch(Exception e)
-        {
-            System.out.println("shtok");
+        catch(Exception e){
+            System.out.println(e.getMessage());
         }
-
     }
-
-
 
 }

@@ -4,7 +4,7 @@
 public class MergeSort
 {
     /**
-     * External mergesort method
+     * External mergeSort method
      * @param a - pair of two strings (privateKey, serialNumber)
      */
     public static void mergeSort(Pair[] a)

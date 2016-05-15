@@ -3,15 +3,13 @@
  */
 public class Puzzle {
 
-
     private int[] privateKey; // Array that saves the privateKey cypher
     private int[] riddle; //Array that saves the riddle serial number cypher
 
-
     /**
      * Constructor
-     * @param privateKey - number Array
-     * @param riddle - number Array
+     * @param privateKey numbers Array
+     * @param riddle numbers Array
      */
     public Puzzle(int[] privateKey, int[] riddle){
         this.privateKey = privateKey;
@@ -20,11 +18,11 @@ public class Puzzle {
 
     /**
      * copy constructor
-     * @param o - puzzle
+     * @param puz puzzle
      */
-    public Puzzle(Puzzle o){
-        int [] oRiddle = o.getRiddle();
-        int [] oPrivateKey = o.getPrivateKey();
+    public Puzzle(Puzzle puz){
+        int [] oRiddle = puz.getRiddle();
+        int [] oPrivateKey = puz.getPrivateKey();
         privateKey = new int[oPrivateKey.length];
         riddle = new int[oRiddle.length];
         for (int i = 0; i < oPrivateKey.length; i++){

@@ -8,152 +8,91 @@ class AVLTree
     /* Constructor */
     public AVLTree()
     {
-       this.root =null;
+       //Complete Your Code Here
     }
     /* Function to check if tree is empty */
     public boolean isEmpty()
     {
-        return (root == null);
+        //Complete Your Code Here
     }
     /* Make the tree logically empty */
     public void makeEmpty()
     {
-        root =null;
+        //Complete Your Code Here
     }
     /* Function to insert data */
-    public void insert(Integer data, String riddle)
+    public void insert(Comparable data)
     {
-        root = insert(data,riddle, root);
+        //Complete Your Code Here
     }
     /* Function to get height of node */
     private int height(AVLNode t )
     {
-        return t == null ? -1 : t.height;
+        //Complete Your Code Here
     }
     /* Function to max of left/right node */
     private int max(int lhs, int rhs)
     {
-        return lhs > rhs ? lhs : rhs;
+        //Complete Your Code Here
     }
     /* Function to insert data recursively */
-    private AVLNode insert(Integer x,String riddle, AVLNode t)
+    private AVLNode insert(Comparable x, AVLNode t)
     {
-        if (t == null)
-            t = new AVLNode(x,riddle);
-        else if (x < t.key)
-        {
-            t.left = insert( x,riddle, t.left );
-            if( height( t.left ) - height( t.right ) == 2 )
-                if( x < t.left.key)
-                    t = rotateWithLeftChild( t );
-                else
-                    t = doubleWithLeftChild( t );
-        }
-        else if( x > t.key)
-        {
-            t.right = insert( x,riddle, t.right );
-            if( height( t.right ) - height( t.left ) == 2 )
-                if( x > t.right.key)
-                    t = rotateWithRightChild( t );
-                else
-                    t = doubleWithRightChild( t );
-        }
-        else
-            ;  // Duplicate; do nothing
-        t.height = max( height( t.left ), height( t.right ) ) + 1;
-        return t;
-
+        //Complete Your Code Here
     }
     /* Rotate binary tree node with left child */
     private AVLNode rotateWithLeftChild(AVLNode k2)
     {
-        AVLNode k1 = k2.left;
-        k2.left = k1.right;
-        k1.right = k2;
-        k2.height = max( height( k2.left ), height( k2.right ) ) + 1;
-        k1.height = max( height( k1.left ), k2.height ) + 1;
-        return k1;
+        //Complete Your Code Here
     }
 
     /* Rotate binary tree node with right child */
     private AVLNode rotateWithRightChild(AVLNode k1)
     {
-        AVLNode k2 = k1.right;
-        k1.right = k2.left;
-        k2.left = k1;
-        k1.height = max( height( k1.left ), height( k1.right ) ) + 1;
-        k2.height = max( height( k2.right ), k1.height ) + 1;
-        return k2;
+        //Complete Your Code Here
     }
     /**
      * Double rotate binary tree node: first left child
      * with its right child; then node k3 with new left child */
     private AVLNode doubleWithLeftChild(AVLNode k3)
     {
-        k3.left = rotateWithRightChild( k3.left );
-        return rotateWithLeftChild( k3 );
+        //Complete Your Code Here
     }
     /**
      * Double rotate binary tree node: first right child
      * with its left child; then node k1 with new right child */
     private AVLNode doubleWithRightChild(AVLNode k1)
     {
-        k1.right = rotateWithLeftChild( k1.right );
-        return rotateWithRightChild( k1 );
+        //Complete Your Code Here
     }
     /* Functions to count number of nodes */
     public int countNodes()
     {
-        return countNodes(root);
-
+        //Complete Your Code Here
     }
     private int countNodes(AVLNode r)
     {
-        if (r == null)
-            return 0;
-        else
-        {
-            int l = 1;
-            l += countNodes(r.left);
-            l += countNodes(r.right);
-            return l;
-        }
+        //Complete Your Code Here
     }
     /* Functions to search for an element */
-    public String search(Integer val)
+    public boolean search(Comparable val)
     {
-        return search(root, val);
-
+        //Complete Your Code Here
     }
-    private String search(AVLNode r, Integer val)
+    private boolean search(AVLNode r, Comparable val)
     {
-        while (r != null) {
-            if (val < r.key)
-                r = r.left;
-            else if (val > r.key)
-                r = r.right;
-            else {
-                return r.riddle;
-            }
-            return search(r, val);
-        }
-        return null;
+        //Complete Your Code Here
     }
     /* Function for inorder traversal */
     public void inorder(PrintWriter out)
     {
-        inorder(this.root);
+        //Complete Your Code Here
     }
-    private void inorder(AVLNode r)
+    private void inorder(AVLNode r, PrintWriter out)
     {
-        if (r != null)
-        {
-            inorder(r.left);
-            System.out.print(r.key.intValue() +" ");
-            inorder(r.right);
-        }
+        //Complete Your Code Here
     }
-/*
+
     public int[] getPrivateKey(String sIndex) {
         //Complete Your Code Here
     }
@@ -161,5 +100,4 @@ class AVLTree
     private int[] getPrivateKey(AVLNode r, String sIndex) {
         //Complete Your Code Here
     }
-    */
 }
